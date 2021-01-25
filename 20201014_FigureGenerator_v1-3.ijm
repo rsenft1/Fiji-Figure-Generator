@@ -104,7 +104,7 @@ channellist=newArray(Ch1Save,Ch2Save,Ch3Save,Ch4Save); //it's fine if the channe
 //1.5 Initialize Log File
 print("*******************************************************************************************************************************************");
 print("Figures generated on: "+date);
-print("Script: 20200717_FigureGenerator v1.2");
+print("Script: 20200717_FigureGenerator v1.3");
 print("Image: "+name);
 print("Region: "+region);
 print("Ch 1: "+C1LUT+" "+C1name);
@@ -249,6 +249,7 @@ function saveChannelCombo(name,saveName,channellist,labellist){
 		all=channellist[0]+channellist[1]+channellist[2]+channellist[3];
 		selectWindow(name);
 		Stack.setActiveChannels(all);
+		run("Duplicate...", "title=RGB duplicate");
 		run("RGB Color");
 		if (Scale){
 			scalesize=setScaleSize();
@@ -260,6 +261,7 @@ function saveChannelCombo(name,saveName,channellist,labellist){
 			print("Scale bar size for "+getTitle()+" "+"is "+scalesize+" "+X+"s");
 		}
 		run("Close");
+		closeIfOpen("RGB");
 		for (i = 0; i < channellist.length; i++) {
 			if(channellist[i]=="1"){
 				selectWindow(name);
